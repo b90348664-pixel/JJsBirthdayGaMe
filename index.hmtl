@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JHAMAR LEVELS UP! 🎮</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- CRT screen effect overlay -->
+    <div class="crt-effect"></div>
+    
+    <div class="arcade-cabinet">
+        <!-- Marquee / Header -->
+        <div class="marquee">
+            <h1>JHAMAR</h1>
+            <h2>LEVEL 22</h2>
+            <div class="player-select">1P · 2P · BATTLE</div>
+        </div>
+        
+        <!-- Main Screen -->
+        <div class="screen">
+            <div id="game-area" class="game-area">
+                <!-- Level 1: Number Guessing (VS FIGHTER STYLE) -->
+                <div id="level1" class="level active-level">
+                    <div class="vs-screen">
+                        <div class="fighter-left">
+                            <span class="fighter-name">??CHALLENGER??</span>
+                            <div class="fighter-stats">
+                                <div class="stat-bar hp">
+                                    <span>HP</span>
+                                    <div class="bar-fill" style="width: 100%"></div>
+                                </div>
+                                <div class="stat-bar mp">
+                                    <span>MP</span>
+                                    <div class="bar-fill" style="width: 75%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="vs-logo">VS</div>
+                        
+                        <div class="fighter-right">
+                            <span class="fighter-name">JHAMAR</span>
+                            <div class="fighter-stats">
+                                <div class="stat-bar hp">
+                                    <span>HP</span>
+                                    <div class="bar-fill" style="width: 100%"></div>
+                                </div>
+                                <div class="stat-bar mp">
+                                    <span>MP</span>
+                                    <div class="bar-fill" style="width: 100%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="game-window">
+                        <p class="quest-text">▶ MISSION: Find Jhamar's power level ◀</p>
+                        <p class="quest-sub">(He just leveled up to 22!)</p>
+                        
+                        <div class="input-group">
+                            <input type="number" id="guess-input" placeholder="ENTER POWER LEVEL" class="arcade-input">
+                            <button onclick="checkGuess()" class="arcade-btn">
+                                <span>▶ FIGHT!</span>
+                            </button>
+                        </div>
+                        <div id="guess-hint" class="hint-box"></div>
+                        
+                        <!-- Pixel art life counter -->
+                        <div class="life-counter">
+                            <span>ATTEMPTS:</span>
+                            <span class="hearts">❤️❤️❤️❤️❤️</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Level 2: Word Scramble (STREET FIGHTER SELECT SCREEN) -->
+                <div id="level2" class="level" style="display: none;">
+                    <div class="select-screen">
+                        <div class="character-select">
+                            <span class="select-title">CHOOSE YOUR ANSWER</span>
+                            <div class="character-grid">
+                                <div class="character-icon" data-char="robin">ROBIN</div>
+                                <div class="character-icon" data-char="batman">BATMAN</div>
+                                <div class="character-icon" data-char="duo" class="selected">DYNAMIC</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="game-window">
+                        <p class="quest-text">▶ SECRET UNLOCK: The Dynamic Duo phrase ◀</p>
+                        <div class="scramble-box">
+                            <span class="scrambled-word">EHT NORIB OT RUOY NAMTAB</span>
+                        </div>
+                        
+                        <div class="input-group">
+                            <input type="text" id="word-input" placeholder="ENTER PHRASE" class="arcade-input">
+                            <button onclick="checkWord()" class="arcade-btn">
+                                <span>▶ UNLOCK</span>
+                            </button>
+                        </div>
+                        <p id="word-hint" class="hint-box"></p>
+                        
+                        <!-- Pixel art hint -->
+                        <div class="pixel-hint">
+                            <span>⬆️⬇️⬅️⬆️ HINT: something that is always said when we're fighting the devil ⬆️⬇️⬅️⬆️</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Level 3: Final Surprise (WIN SCREEN / CHAMPION SPLASH) -->
+                <div id="level3" class="level victory-screen" style="display: none;">
+                    <!-- League of Legends style splash art background -->
+                    <div class="splash-overlay"></div>
+                    
+                    <div class="victory-content">
+                        <h1 class="victory-title">PERFECT VICTORY!</h1>
+                        <h2 class="champion-name">JHAMAR</h2>
+                        <h3 class="champion-title">GRANDMASTER TOP 500</h3>
+                        
+                        <div class="splash-art">
+                            <div class="photo-frame">
+                                <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F67%2F2c%2F18%2F672c18460d31e02c7f099f365d92c666.jpg&f=1&nofb=1&ipt=13230458808d726a249184b1f296f9685eb3c5c407847014472201ff2a73dd78" alt="Jhamar" class="champion-splash">
+                                <div class="gif-corner">
+                                    <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia.giphy.com%2Fmedia%2FjE6W1adWIVpzG%2Fgiphy.gif&f=1&nofb=1&ipt=b23e8a3dc9f7a764f9351efb13e9841f76518c4934f4bb067931bdbfbcae421d" alt="Victory Dance" class="victory-gif">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Champion Stats / Personal Message -->
+                        <div class="champion-stats">
+                            <div class="stat-card">
+                                <span class="stat-label">SPECIAL MOVE</span>
+                                <span class="stat-value">THE MOUTH</span>
+                                <span class="stat-desc">Curses anybody that tries him + Deep talks = 100% Friendship Damage</span>
+                            </div>
+                            <div class="stat-card">
+                                <span class="stat-label">QUOTE</span>
+                                <span class="stat-value">"Jhamar, happy birthday and thank you for being an amazing friend."</span>
+                            </div>
+                            <div class="stat-card full-width">
+                                <span class="stat-label">FRIENDSHIP LEVEL</span>
+                                <div class="friendship-bar">
+                                    <div class="friendship-fill" style="width: 100%">∞</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Fun memory -->
+                        <div class="memory-unlocked">
+                            <span class="memory-tag">🎮 ACHIEVEMENT UNLOCKED 🎮</span>
+                            <p class="memory-text"> Any time we play games together. I enjoy every moment with you especially when it's time to shit talk. </p>
+                            <p class="robin-quote">"You're the Batman to my Robin- Jun can stay mad" 🦇</p>
+                        </div>
+                        
+                        <div class="continue-screen">
+                            <span class="blinking-text">▶ PRESS START FOR ROUND 2 ◀</span>
+                        </div>
+                    </div>
+                    
+                    <div id="confetti"></div>
+                </div>
+            </div>
+            
+            <!-- Progress / Stage Indicator -->
+            <div class="stage-indicator">
+                <span class="stage-item active" id="stage1">STAGE 1</span>
+                <span class="stage-item" id="stage2">STAGE 2</span>
+                <span class="stage-item" id="stage3">FINAL STAGE</span>
+            </div>
+        </div>
+        
+        <!-- Arcade Controls -->
+        <div class="controls">
+            <div class="joystick">
+                <div class="stick"></div>
+                <div class="base"></div>
+            </div>
+            <div class="buttons">
+                <div class="arcade-button red"></div>
+                <div class="arcade-button blue"></div>
+                <div class="arcade-button green"></div>
+                <div class="arcade-button yellow"></div>
+            </div>
+            <div class="coin-slot">
+                <div class="slot"></div>
+                <span>INSERT COIN</span>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
